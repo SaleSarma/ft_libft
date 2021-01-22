@@ -6,34 +6,29 @@
 /*   By: svrcelj <svrcelj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:42:28 by svrcelj           #+#    #+#             */
-/*   Updated: 2021/01/12 15:44:40 by svrcelj          ###   ########.fr       */
+/*   Updated: 2021/01/22 12:47:51 by svrcelj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
 int		ft_atoi(char *str)
 {
-	int		neg;
-	int		i;
-	int		num;
+	int sign;
+	int res;
 
-	neg = 1;
-	i = 0;
-	num = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-			|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	while (str[i] == '+' || str[i] == '-')
+	res = 0;
+	sign = 1;
+	while ((*str <= 13 && *str >= 9) || *str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
-			neg = neg * (-1);
-		i++;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str >= '0' && *str <= '9')
 	{
-		num = num * 10 + (str[i] - '0');
-		i++;
+		res = res * 10 + *str - '0';
+		str++;
 	}
-	return (num * (neg));
+	return (res * sign);
 }
