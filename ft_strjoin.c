@@ -6,7 +6,7 @@
 /*   By: svrcelj <svrcelj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:45:09 by svrcelj           #+#    #+#             */
-/*   Updated: 2021/01/15 14:58:28 by svrcelj          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:03:47 by svrcelj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
-	if (!(str = malloc(len + 1 * sizeof(*s1))))
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
 		return (0);
 	str[len--] = '\0';
 	while (*s1)
